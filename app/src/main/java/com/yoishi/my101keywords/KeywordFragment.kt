@@ -2,14 +2,13 @@ package com.yoishi.my101keywords
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 
@@ -22,7 +21,6 @@ private const val ARG_PARAM1 = "param1"
  * create an instance of this fragment.
  */
 class KeywordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var listener: OnFragmentInteractionListener? = null
     private var keywordNo: Int = 1
 
@@ -53,7 +51,10 @@ class KeywordFragment : Fragment() {
         val previousButton = view.findViewById<Button>(R.id.previous_button)
         previousButton.setOnClickListener{
             if (keywordNo == 1) {
-
+                keywordNo = MyKeyword.values().size
+                keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
+                keywordTextView.text =
+                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             } else {
                 keywordNo--
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
@@ -65,20 +66,17 @@ class KeywordFragment : Fragment() {
         val nextButton = view.findViewById<Button>(R.id.next_button)
         nextButton.setOnClickListener{
             if (keywordNo == MyKeyword.values().size) {
-
+                keywordNo = 1
+                keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
+                keywordTextView.text =
+                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             } else {
                 keywordNo++
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
-                keywordTextView.text = "これは気になるキーワード"
                 keywordTextView.text =
                     MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             }
         }
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
     }
 
 //    override fun onAttach(context: Context) {
@@ -120,7 +118,6 @@ class KeywordFragment : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment KeywordFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: Int) =
             KeywordFragment().apply {

@@ -46,35 +46,35 @@ class KeywordFragment : Fragment() {
         keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
 
         val keywordTextView = view.findViewById<TextView>(R.id.keyword_text)
-        keywordTextView.text = MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
+        keywordTextView.text = MyKeywords.values().filter { this.keywordNo == it.keywordNo }.first().keyword
 
         val previousButton = view.findViewById<Button>(R.id.previous_button)
         previousButton.setOnClickListener{
             if (keywordNo == 1) {
-                keywordNo = MyKeyword.values().size
+                keywordNo = MyKeywords.values().size
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
                 keywordTextView.text =
-                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
+                    MyKeywords.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             } else {
                 keywordNo--
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
                 keywordTextView.text =
-                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
+                    MyKeywords.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             }
         }
 
         val nextButton = view.findViewById<Button>(R.id.next_button)
         nextButton.setOnClickListener{
-            if (keywordNo == MyKeyword.values().size) {
+            if (keywordNo == MyKeywords.values().size) {
                 keywordNo = 1
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
                 keywordTextView.text =
-                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
+                    MyKeywords.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             } else {
                 keywordNo++
                 keywordNoTextView.text = "キーワード" + Integer.toString(keywordNo)
                 keywordTextView.text =
-                    MyKeyword.values().filter { this.keywordNo == it.keywordNo }.first().keyword
+                    MyKeywords.values().filter { this.keywordNo == it.keywordNo }.first().keyword
             }
         }
     }
@@ -115,7 +115,6 @@ class KeywordFragment : Fragment() {
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
          * @return A new instance of fragment KeywordFragment.
          */
         @JvmStatic

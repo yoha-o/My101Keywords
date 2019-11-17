@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(R.id.keyword_card_container, KeywordFragment.newInstance(1))
+            transaction.add(R.id.keyword_container, KeywordListFragment.newInstance())
             transaction.commit()
         }
 

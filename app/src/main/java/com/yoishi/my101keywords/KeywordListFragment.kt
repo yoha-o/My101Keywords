@@ -18,7 +18,6 @@ import android.widget.ListView
  */
 class KeywordListFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
-    private var keywords = mutableListOf<Keyword>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +35,7 @@ class KeywordListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val kwsValues = MyKeywords.values()
-
+        val keywords = mutableListOf<Keyword>()
         for (kv in kwsValues) {
             keywords.add(Keyword("キーワード" + Integer.toString(kv.keywordNo), kv.keyword))
         }
@@ -46,7 +45,7 @@ class KeywordListFragment : Fragment() {
 
         listView.setOnItemClickListener { adapterView, view, position, id ->
             val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.keyword_container, KeywordFragment.newInstance(position + 1))
+            transaction?.replace(R.id.container, KeywordFragment.newInstance(position + 1))
             transaction?.addToBackStack(null)
             transaction?.commit()
         }
